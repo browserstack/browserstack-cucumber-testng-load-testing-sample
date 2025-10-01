@@ -16,7 +16,7 @@ import org.testng.Assert;
 import java.net.URL;
 import java.time.Duration;
 
-public class BStackDemoSteps {
+public class bstack_test_add_to_cart {
 
     private RemoteWebDriver driver;
     private String notedProductName;
@@ -25,7 +25,8 @@ public class BStackDemoSteps {
     public void i_open_the_bstack_demo_homepage() throws Exception {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName("chrome");
-        // Set the
+        
+        // Set the BrowserStack HUB URL
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://www.bstackdemo.com");
