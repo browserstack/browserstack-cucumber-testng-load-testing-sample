@@ -31,7 +31,25 @@
    - **Linux ARM**  
      [browserstack-cli-linux-arm](https://load-api.browserstack.com/api/v1/binary?os=linux&arch=arm64)
 
-   > Place the downloaded `browserstack-cli` binary in the root of your project.
+   > The download is a zip. Extract it and place the `browserstack-cli` binary in the root of your project.
+
+3. **Verify the BrowserStack CLI**
+
+   Before running the binary, check that it is signed by BrowserStack:
+
+   - **macOS**: the output must include `TeamIdentifier=YQ5FZQ855D` (Browserstack Inc).
+
+     ```sh
+     codesign --verify --strict ./browserstack-cli && codesign -dv ./browserstack-cli 2>&1 | grep TeamIdentifier
+     ```
+
+   - **Windows** (PowerShell): `Status` must be `Valid` and the signer must be BrowserStack.
+
+     ```powershell
+     Get-AuthenticodeSignature .\browserstack-cli.exe | Format-List Status, SignerCertificate
+     ```
+
+   If the check fails, do not run the binary.
 
 4. **Run tests using BrowserStack CLI**
 
